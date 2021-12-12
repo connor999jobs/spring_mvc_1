@@ -3,13 +3,20 @@ package org.example.spring_mvc.model;
 
 
 
+import org.example.spring_mvc.validation.CheckEmail;
+
+import javax.validation.constraints.*;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Employee {
 
+    @Size(min = 2, message = "Minimum 2 symbols")
     private String name;
+    @NotBlank(message = "Не должно быть пустым.")
     private String surName;
+    @Min(value = 500, message = "Must be greate than 499")
+    @Max(value = 1000, message = "Must be less than 1001")
     private int salary;
     private String department;
     private Map<String, String> departments;
@@ -18,6 +25,11 @@ public class Employee {
     private String [] languages;
     private Map<String, String> languagess;
 
+    @Pattern(regexp = "\\d{3}-\\d{2}-\\d{2}", message = "please use pattern XXX-XX-XX")
+    private String phoneNumber;
+
+    @CheckEmail
+    private String email;
 
 
     public Employee(){
@@ -35,6 +47,22 @@ public class Employee {
         languagess.put("Fr","Frense");
         languagess.put("De","Deutch");
 
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public Map<String, String> getLanguagess() {

@@ -22,6 +22,15 @@ Languages: <ur>
         <li> ${lang}</li>
     </c:forEach>
 </ur>
+<br>
+Your phone number: ${employee.phoneNumber}
+<br>
+Your email: ${employee.email}
+<br>
+
+
+
+<a href="/spring_mvc_1_war_exploded/employee/">Go to the main</a>
 
 
 </body>
